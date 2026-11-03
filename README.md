@@ -1,6 +1,6 @@
 # ButtonCraft
 
-Curated collection of 28+ aesthetic, animated, and unique interactive button components designed for modern web applications and design templates.
+Curated collection of 36+ aesthetic, animated, and unique interactive button components designed for modern web applications and design templates.
 
 Includes instant 1-click code copying for **CSS**, **HTML**, and **React / JSX**.
 
