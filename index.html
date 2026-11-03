@@ -24,6 +24,18 @@
           </div>
 
           <div class="nav-actions">
+            <!-- Favorites Drawer Trigger -->
+            <button class="nav-btn" id="openFavoritesBtn" type="button" aria-label="Open saved favorites collection">
+              <span>Saved</span>
+              <span class="badge-count" id="favoritesCountBadge">0</span>
+            </button>
+
+            <!-- Compare Mode Trigger -->
+            <button class="nav-btn" id="openCompareBtn" type="button" aria-label="Open compare stage">
+              <span>Compare</span>
+              <span class="badge-count" id="compareCountBadge">0</span>
+            </button>
+
             <!-- Theme Toggle: R-21 & R-34 -->
             <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Toggle visual theme">
               <span class="theme-icon light-icon" aria-hidden="true">☼</span>
@@ -46,16 +58,17 @@
             Tactile, animated buttons crafted for <em class="editorial-italic">real interfaces</em>.
           </h1>
           <p class="hero-lede">
-            Fine-tune button radius, scale, and text in realtime. Export pure CSS, React components, Vue SFC, or download standalone single-file HTML. Deep link any element directly.
+            Fine-tune button radius, scale, and text in realtime. Compare candidates side by side, test in realistic UI scenes, save favorites, and export pure CSS, React components, Vue SFC, or download standalone single-file HTML.
           </p>
         </div>
 
         <!-- Filter & Search Console -->
         <div class="catalog-controls">
           <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search by character, tactile style, or tags..." autocomplete="off" aria-label="Search button collection" />
+            <input type="text" id="searchInput" placeholder="Search buttons or tags (Press Cmd+K)..." autocomplete="off" aria-label="Search button collection" />
           </div>
 
+          <!-- Category Filter Bar -->
           <nav class="category-strip" id="categoryTabs" aria-label="Button style filter">
             <button class="filter-btn active" data-category="all" type="button">All Items</button>
             <button class="filter-btn" data-category="minimal" type="button">Minimal</button>
@@ -67,13 +80,22 @@
             <button class="filter-btn" data-category="retro" type="button">8-Bit</button>
             <button class="filter-btn" data-category="playful" type="button">Elastic</button>
           </nav>
+
+          <!-- Interactive Multi-Tag Strip -->
+          <div class="tags-filter-bar">
+            <span class="tags-filter-label">Filter Tags:</span>
+            <div class="tags-filter-list" id="tagsFilterList">
+              <!-- Injected by main.ts -->
+            </div>
+            <button class="clear-tags-btn" id="clearTagsBtn" type="button" style="display: none;">Clear Tags</button>
+          </div>
         </div>
       </section>
 
       <!-- Main Buttons Grid -->
       <main class="catalog-section" id="catalogMain">
         <div class="catalog-header">
-          <span class="catalog-count" id="resultsCount">Displaying 20 elements</span>
+          <span class="catalog-count" id="resultsCount">Displaying 28 elements</span>
           <span class="catalog-legend">Interactive live stage</span>
         </div>
 
@@ -91,6 +113,9 @@
               <p class="modal-desc" id="modalButtonDesc">Description</p>
             </div>
             <div class="modal-actions-right">
+              <button class="modal-permalink-btn" id="modalFavBtn" type="button" aria-label="Save to favorites">
+                Save
+              </button>
               <button class="modal-permalink-btn" id="modalPermalinkBtn" type="button" aria-label="Copy direct permalink">
                 Share Link
               </button>
@@ -100,9 +125,20 @@
             </div>
           </div>
 
-          <!-- Live Stage -->
+          <!-- Context Scene Switcher Bar -->
+          <div class="context-scene-bar">
+            <span class="scene-label">Preview Environment:</span>
+            <div class="scene-buttons" role="tablist">
+              <button class="scene-btn active" data-scene="isolated" type="button">Isolated</button>
+              <button class="scene-btn" data-scene="navbar" type="button">In Header Nav</button>
+              <button class="scene-btn" data-scene="card" type="button">In Pricing Card</button>
+              <button class="scene-btn" data-scene="form" type="button">In Dialog Form</button>
+            </div>
+          </div>
+
+          <!-- Live Stage: Adapts to Context Scene -->
           <div class="modal-stage" id="modalPreviewStage">
-            <!-- Rendered button -->
+            <!-- Rendered button or context environment -->
           </div>
 
           <!-- Realtime Customizer Controls Bar -->
@@ -143,6 +179,44 @@
         </div>
       </div>
 
+      <!-- Compare Mode Drawer Modal -->
+      <div class="modal-backdrop" id="compareModal" role="dialog" aria-modal="true" aria-labelledby="compareModalTitle" aria-hidden="true">
+        <div class="modal-panel modal-wide">
+          <div class="modal-topbar">
+            <div class="modal-identity">
+              <h2 class="modal-title" id="compareModalTitle">Side-by-Side Comparison</h2>
+              <p class="modal-desc">Compare button motion signatures, visual weight, and tactile feel.</p>
+            </div>
+            <div class="modal-actions-right">
+              <button class="modal-permalink-btn" id="clearCompareBtn" type="button">Clear All</button>
+              <button class="modal-close-btn" id="closeCompareBtn" type="button" aria-label="Close compare modal">✕</button>
+            </div>
+          </div>
+          <div class="compare-grid" id="compareGrid">
+            <!-- Injected by main.ts -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Favorites / Saved Drawer Modal -->
+      <div class="modal-backdrop" id="favoritesModal" role="dialog" aria-modal="true" aria-labelledby="favModalTitle" aria-hidden="true">
+        <div class="modal-panel modal-wide">
+          <div class="modal-topbar">
+            <div class="modal-identity">
+              <h2 class="modal-title" id="favModalTitle">Saved Collection</h2>
+              <p class="modal-desc">Your curated buttons saved locally for design system integration.</p>
+            </div>
+            <div class="modal-actions-right">
+              <button class="copy-action-btn" id="exportAllFavsCssBtn" type="button">Export Bundle CSS</button>
+              <button class="modal-close-btn" id="closeFavoritesBtn" type="button" aria-label="Close favorites modal">✕</button>
+            </div>
+          </div>
+          <div class="favorites-grid" id="favoritesGrid">
+            <!-- Injected by main.ts -->
+          </div>
+        </div>
+      </div>
+
       <!-- Toast Notice -->
       <div class="toast-notice" id="toast" role="status" aria-live="polite">
         <span id="toastMsg">Code copied to clipboard</span>
@@ -152,7 +226,9 @@
       <footer class="site-footer">
         <div class="footer-inner">
           <p class="footer-copy">Crafted with deliberate motion and zero generic AI templates.</p>
-          <p class="footer-meta">Source available on <a href="https://github.com/irbahtaqiy/button-craft" target="_blank" rel="noreferrer">GitHub</a>.</p>
+          <p class="footer-meta">
+            Live on <a href="https://irbahtaqiy.github.io/button-craft/" target="_blank" rel="noreferrer">GitHub Pages</a> · Source on <a href="https://github.com/irbahtaqiy/button-craft" target="_blank" rel="noreferrer">GitHub</a>.
+          </p>
         </div>
       </footer>
     </div>
