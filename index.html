@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ButtonCraft: Independent Button Design System</title>
-    <meta name="description" content="Production-ready interactive button elements. Clean, distinct motion signatures with instant HTML, CSS, and React exports." />
+    <meta name="description" content="Production-ready interactive button elements. Live customization, multi-framework exports, standalone HTML downloads, and zero dependencies." />
     <!-- Editorial Studio Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,14 +39,14 @@
         </div>
       </header>
 
-      <!-- Hero Header: Content-driven, No Eyebrow Pill, No AI Slop Gradients -->
+      <!-- Hero Header -->
       <section class="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">
             Tactile, animated buttons crafted for <em class="editorial-italic">real interfaces</em>.
           </h1>
           <p class="hero-lede">
-            Each element features an isolated motion signature: physical depth, border luminescence, elastic springs, or crisp microinteractions. Zero dependencies. Copy pure CSS or React components instantly.
+            Fine-tune button radius, scale, and text in realtime. Export pure CSS, React components, Vue SFC, or download standalone single-file HTML. Deep link any element directly.
           </p>
         </div>
 
@@ -82,7 +82,7 @@
         </div>
       </main>
 
-      <!-- Code Inspector Modal -->
+      <!-- Code Inspector & Live Configurator Modal -->
       <div class="modal-backdrop" id="codeModal" role="dialog" aria-modal="true" aria-labelledby="modalButtonName" aria-hidden="true">
         <div class="modal-panel">
           <div class="modal-topbar">
@@ -90,14 +90,41 @@
               <h2 class="modal-title" id="modalButtonName">Button Name</h2>
               <p class="modal-desc" id="modalButtonDesc">Description</p>
             </div>
-            <button class="modal-close-btn" id="modalCloseBtn" type="button" aria-label="Close modal">
-              ✕
-            </button>
+            <div class="modal-actions-right">
+              <button class="modal-permalink-btn" id="modalPermalinkBtn" type="button" aria-label="Copy direct permalink">
+                Share Link
+              </button>
+              <button class="modal-close-btn" id="modalCloseBtn" type="button" aria-label="Close modal">
+                ✕
+              </button>
+            </div>
           </div>
 
           <!-- Live Stage -->
           <div class="modal-stage" id="modalPreviewStage">
             <!-- Rendered button -->
+          </div>
+
+          <!-- Realtime Customizer Controls Bar -->
+          <div class="customizer-toolbar">
+            <div class="config-field">
+              <label for="cfgButtonLabel">Label Text</label>
+              <input type="text" id="cfgButtonLabel" placeholder="Custom text..." />
+            </div>
+            <div class="config-field">
+              <label for="cfgScaleSlider">Scale (<span id="cfgScaleVal">1.0x</span>)</label>
+              <input type="range" id="cfgScaleSlider" min="0.8" max="1.3" step="0.05" value="1.0" />
+            </div>
+            <div class="config-field">
+              <label for="cfgRadiusSlider">Radius (<span id="cfgRadiusVal">Default</span>)</label>
+              <input type="range" id="cfgRadiusSlider" min="0" max="32" step="2" value="8" />
+            </div>
+            <div class="config-actions">
+              <button class="config-reset-btn" id="cfgResetBtn" type="button">Reset</button>
+              <button class="config-dl-btn" id="cfgDownloadBtn" type="button" title="Download standalone single HTML file">
+                Download .html
+              </button>
+            </div>
           </div>
 
           <!-- Code Workspace -->
@@ -106,8 +133,9 @@
               <button class="tab-item active" data-tab="css" role="tab" type="button">CSS</button>
               <button class="tab-item" data-tab="html" role="tab" type="button">HTML</button>
               <button class="tab-item" data-tab="react" role="tab" type="button">React</button>
+              <button class="tab-item" data-tab="vue" role="tab" type="button">Vue SFC</button>
               <button class="copy-action-btn" id="copyCodeBtn" type="button">
-                <span id="copyBtnText">Copy to Clipboard</span>
+                <span id="copyBtnText">Copy Code</span>
               </button>
             </div>
             <pre class="code-viewport"><code id="codeSnippetArea"></code></pre>
@@ -115,7 +143,7 @@
         </div>
       </div>
 
-      <!-- Toast Feedback -->
+      <!-- Toast Notice -->
       <div class="toast-notice" id="toast" role="status" aria-live="polite">
         <span id="toastMsg">Code copied to clipboard</span>
       </div>
