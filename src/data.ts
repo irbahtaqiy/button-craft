@@ -1071,5 +1071,400 @@ export const buttonsData: ButtonItem[] = [
     render: (c) => {
       c.innerHTML = `<button class="btn-hazard"><span>CONFIRM DESTRUCTION</span></button>`;
     }
+  },
+
+  // 21. Magnetic Floating Badge
+  {
+    id: 'floating-magnetic',
+    name: 'Tactile Floating Pill',
+    category: 'minimal',
+    tags: ['floating', 'tactile', 'minimal', 'smooth'],
+    description: 'Elevated floating pill with layered soft ambient occlusion',
+    html: `<button class="btn-floating-pill">
+  <span class="btn-float-dot"></span>
+  <span>System Ready</span>
+</button>`,
+    css: `.btn-floating-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: #1e2430;
+  color: #f1f5f9;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #2d3748;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-float-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+}
+
+.btn-floating-pill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -4px rgba(0, 0, 0, 0.3);
+  border-color: #4a5568;
+}
+
+.btn-floating-pill:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.3);
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-floating-pill"><span class="btn-float-dot"></span><span>System Ready</span></button>`;
+    }
+  },
+
+  // 22. Cyber Scanline Reticle
+  {
+    id: 'cyber-reticle',
+    name: 'Cyber Scanline Target',
+    category: 'cyberpunk',
+    tags: ['scifi', 'hud', 'targeting', 'scanline'],
+    description: 'Corner HUD brackets expanding outward on hover lock',
+    html: `<button class="btn-hud-reticle">
+  <span class="hud-corner top-left"></span>
+  <span class="hud-corner top-right"></span>
+  <span class="hud-corner btm-left"></span>
+  <span class="hud-corner btm-right"></span>
+  <span class="hud-label">ENGAGE TARGET</span>
+</button>`,
+    css: `.btn-hud-reticle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 30px;
+  background: rgba(0, 240, 255, 0.05);
+  color: #00f0ff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hud-corner {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: #00f0ff;
+  border-style: solid;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hud-corner.top-left { top: -2px; left: -2px; border-width: 2px 0 0 2px; }
+.hud-corner.top-right { top: -2px; right: -2px; border-width: 2px 2px 0 0; }
+.hud-corner.btm-left { bottom: -2px; left: -2px; border-width: 0 0 2px 2px; }
+.hud-corner.btm-right { bottom: -2px; right: -2px; border-width: 0 2px 2px 0; }
+
+.btn-hud-reticle:hover {
+  background: rgba(0, 240, 255, 0.15);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+}
+
+.btn-hud-reticle:hover .hud-corner.top-left { transform: translate(-4px, -4px); }
+.btn-hud-reticle:hover .hud-corner.top-right { transform: translate(4px, -4px); }
+.btn-hud-reticle:hover .hud-corner.btm-left { transform: translate(-4px, 4px); }
+.btn-hud-reticle:hover .hud-corner.btm-right { transform: translate(4px, 4px); }`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-hud-reticle"><span class="hud-corner top-left"></span><span class="hud-corner top-right"></span><span class="hud-corner btm-left"></span><span class="hud-corner btm-right"></span><span class="hud-label">ENGAGE TARGET</span></button>`;
+    }
+  },
+
+  // 23. Stamped Stamp Ink
+  {
+    id: 'stamped-wax',
+    name: 'Architectural Stamped Key',
+    category: 'brutalist',
+    tags: ['architectural', 'stamp', 'bold', 'mono'],
+    description: 'Precision mechanical stamp with indented active depression',
+    html: `<button class="btn-stamp-arch">
+  <span class="stamp-id">REF.409</span>
+  <span class="stamp-name">VALIDATE</span>
+</button>`,
+    css: `.btn-stamp-arch {
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.15s ease;
+}
+
+.stamp-id {
+  padding: 10px 14px;
+  background: #ffffff;
+  color: #0c0e12;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.stamp-name {
+  padding: 10px 20px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.btn-stamp-arch:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.btn-stamp-arch:active {
+  transform: translateY(1px);
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-stamp-arch"><span class="stamp-id">REF.409</span><span class="stamp-name">VALIDATE</span></button>`;
+    }
+  },
+
+  // 24. Elastic Bubble Popper
+  {
+    id: 'bubble-popper',
+    name: 'Soap Bubble Pop',
+    category: 'playful',
+    tags: ['bubble', 'gloss', 'squishy', 'fun'],
+    description: 'Spherical gloss highlighting that squishes and pops',
+    html: `<button class="btn-bubble">
+  <span class="bubble-reflection"></span>
+  <span class="bubble-text">Pop It!</span>
+</button>`,
+    css: `.btn-bubble {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 30px;
+  background: linear-gradient(180deg, #38bdf8 0%, #2563eb 100%);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  border-radius: 9999px;
+  box-shadow: 0 10px 20px -3px rgba(37, 99, 235, 0.5), inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.bubble-reflection {
+  position: absolute;
+  top: 3px;
+  left: 20%;
+  right: 20%;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 9999px;
+}
+
+.bubble-text {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-bubble:hover {
+  transform: scale(1.06);
+}
+
+.btn-bubble:active {
+  transform: scale(0.92);
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-bubble"><span class="bubble-reflection"></span><span class="bubble-text">Pop It!</span></button>`;
+    }
+  },
+
+  // 25. High-Voltage Plasma Arc
+  {
+    id: 'plasma-arc',
+    name: 'High-Voltage Plasma Arc',
+    category: 'glow',
+    tags: ['plasma', 'lightning', 'energy', 'voltage'],
+    description: 'Intense violet plasma aura throbbing on perimeter contacts',
+    html: `<button class="btn-plasma">
+  <span>IGNITE PLASMA</span>
+</button>`,
+    css: `.btn-plasma {
+  position: relative;
+  padding: 13px 32px;
+  background: #110726;
+  color: #c084fc;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  border: 1px solid #9333ea;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(147, 51, 234, 0.3), inset 0 0 15px rgba(147, 51, 234, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-plasma:hover {
+  background: #1e0b42;
+  color: #f3e8ff;
+  border-color: #c084fc;
+  box-shadow: 0 0 30px rgba(192, 132, 252, 0.7), inset 0 0 20px rgba(192, 132, 252, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-plasma:active {
+  transform: translateY(0);
+  box-shadow: 0 0 10px rgba(192, 132, 252, 0.4);
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-plasma"><span>IGNITE PLASMA</span></button>`;
+    }
+  },
+
+  // 26. Precision Micro-Tick Switch
+  {
+    id: 'micro-tick',
+    name: 'Mechanical Rotary Tick',
+    category: '3d',
+    tags: ['rotary', 'switch', 'tactile', 'mechanical'],
+    description: 'Analog equipment key with metallic bevel reflection',
+    html: `<button class="btn-rotary-tick">
+  <span class="rotary-ring"></span>
+  <span class="rotary-face">CH-01</span>
+</button>`,
+    css: `.btn-rotary-tick {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  background: linear-gradient(145deg, #2a2e39, #1c1f26);
+  color: #cbd5e1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid #3b4252;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 3px 3px 6px #12141a, -1px -1px 3px #383f4d;
+  transition: all 0.15s ease;
+}
+
+.btn-rotary-tick:hover {
+  color: #ffffff;
+  border-color: #64748b;
+  box-shadow: 4px 4px 8px #101217, -2px -2px 4px #424a5b;
+}
+
+.btn-rotary-tick:active {
+  box-shadow: inset 2px 2px 4px #12141a, inset -1px -1px 2px #383f4d;
+  color: #38bdf8;
+  transform: translateY(1px);
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-rotary-tick"><span class="rotary-face">CH-01</span></button>`;
+    }
+  },
+
+  // 27. GameBoy Retro DMG Key
+  {
+    id: 'dmg-retro',
+    name: 'Game Portable D-Pad A/B',
+    category: 'retro',
+    tags: ['gameboy', 'nintendo', 'arcade', 'retro'],
+    description: 'Iconic maroon slanted arcade action button',
+    html: `<button class="btn-gameboy">
+  <span>START</span>
+</button>`,
+    css: `.btn-gameboy {
+  position: relative;
+  padding: 12px 28px;
+  background: #8b1d42;
+  color: #fce7f3;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 6px 0 #540e26, 0 10px 10px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transform: rotate(-12deg);
+  transition: all 0.1s ease;
+}
+
+.btn-gameboy:hover {
+  background: #9d234d;
+}
+
+.btn-gameboy:active {
+  transform: rotate(-12deg) translateY(4px);
+  box-shadow: 0 2px 0 #540e26, 0 4px 6px rgba(0, 0, 0, 0.4);
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-gameboy"><span>START</span></button>`;
+    }
+  },
+
+  // 28. Smoked Quartz Frosted
+  {
+    id: 'smoked-quartz',
+    name: 'Smoked Obsidian Glass',
+    category: 'glass',
+    tags: ['smoked', 'glass', 'quartz', 'luxury'],
+    description: 'Translucent dark smoked glass with polished beveled edge',
+    html: `<button class="btn-smoked-glass">
+  <span>Transfer Assets</span>
+  <span class="smoked-arrow">→</span>
+</button>`,
+    css: `.btn-smoked-glass {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 26px;
+  background: rgba(18, 22, 32, 0.65);
+  color: #e2e8f0;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.smoked-arrow {
+  transition: transform 0.2s ease;
+}
+
+.btn-smoked-glass:hover {
+  background: rgba(28, 34, 48, 0.85);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-smoked-glass:hover .smoked-arrow {
+  transform: translateX(4px);
+}
+
+.btn-smoked-glass:active {
+  transform: translateY(0);
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-smoked-glass"><span>Transfer Assets</span><span class="smoked-arrow">→</span></button>`;
+    }
   }
 ];
