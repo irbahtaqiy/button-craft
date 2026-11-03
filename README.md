@@ -49,10 +49,10 @@ The production output will be generated inside the `dist/` directory.
 
 ## 🛠 Tech Stack
 
-- **Vite** — Next Generation Frontend Tooling
-- **TypeScript** — Type-safe component definitions
-- **CSS3 Animations** — Hardware accelerated transitions, keyframes, backdrop filters, and gradients
-- **JetBrains Mono & Plus Jakarta Sans** — Clean typography
+- **Vite**: Next Generation Frontend Tooling
+- **TypeScript**: Type-safe component definitions
+- **CSS3 Animations**: Hardware accelerated transitions, keyframes, backdrop filters, and gradients
+- **JetBrains Mono & Plus Jakarta Sans**: Clean typography
 
 ---
 
