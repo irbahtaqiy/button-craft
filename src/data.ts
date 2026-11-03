@@ -1466,5 +1466,433 @@ export const buttonsData: ButtonItem[] = [
     render: (c) => {
       c.innerHTML = `<button class="btn-smoked-glass"><span>Transfer Assets</span><span class="smoked-arrow">→</span></button>`;
     }
+  },
+
+  // 29. Magnetic Liquid Ripple Pill
+  {
+    id: 'liquid-ripple',
+    name: 'Liquid Ripple Canvas',
+    category: 'playful',
+    tags: ['ripple', 'liquid', 'interactive', 'water'],
+    description: 'Concentric water ripple expanding from cursor click point',
+    html: `<button class="btn-ripple-click">
+  <span>Trigger Ripple</span>
+</button>`,
+    css: `.btn-ripple-click {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 30px;
+  background: #0284c7;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+  transition: background 0.2s;
+}
+
+.btn-ripple-click:hover {
+  background: #0369a1;
+}
+
+.ripple-wave {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: ripple-grow 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple-grow {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-ripple-click"><span>Trigger Ripple</span></button>`;
+      const btn = c.querySelector('.btn-ripple-click') as HTMLElement;
+      btn?.addEventListener('click', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const circle = document.createElement('span');
+        const diameter = Math.max(rect.width, rect.height);
+        const radius = diameter / 2;
+        circle.style.width = circle.style.height = `${diameter}px`;
+        circle.style.left = `${e.clientX - rect.left - radius}px`;
+        circle.style.top = `${e.clientY - rect.top - radius}px`;
+        circle.classList.add('ripple-wave');
+        const existing = btn.querySelector('.ripple-wave');
+        if (existing) existing.remove();
+        btn.appendChild(circle);
+      });
+    }
+  },
+
+  // 30. Dual-Tone Slanted Cyber Slice
+  {
+    id: 'slanted-dualtone',
+    name: 'Slanted Dual-Tone Slice',
+    category: 'cyberpunk',
+    tags: ['cyberpunk', 'slanted', 'slice', 'dualtone'],
+    description: '45-degree contrasting split block shifting on activation',
+    html: `<button class="btn-slanted-duo">
+  <span class="slanted-left">SYS</span>
+  <span class="slanted-right">OVERRIDE</span>
+</button>`,
+    css: `.btn-slanted-duo {
+  display: inline-flex;
+  padding: 0;
+  background: transparent;
+  border: 2px solid #f43f5e;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13.5px;
+  font-weight: 800;
+  overflow: hidden;
+  transition: transform 0.15s ease;
+}
+
+.slanted-left {
+  padding: 10px 16px;
+  background: #f43f5e;
+  color: #0c0e12;
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
+  transition: transform 0.2s ease;
+}
+
+.slanted-right {
+  padding: 10px 18px 10px 10px;
+  background: #18181b;
+  color: #f43f5e;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-slanted-duo:hover {
+  transform: translateY(-2px);
+}
+
+.btn-slanted-duo:hover .slanted-left {
+  transform: translateX(-2px);
+}
+
+.btn-slanted-duo:hover .slanted-right {
+  background: #f43f5e;
+  color: #0c0e12;
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-slanted-duo"><span class="slanted-left">SYS</span><span class="slanted-right">OVERRIDE</span></button>`;
+    }
+  },
+
+  // 31. Brutalist Marquee Runner
+  {
+    id: 'brutalist-marquee',
+    name: 'Endless Marquee Ticket',
+    category: 'brutalist',
+    tags: ['marquee', 'ticker', 'brutalist', 'ticker'],
+    description: 'Horizontal rolling ticker ribbon looping infinitely on hover',
+    html: `<button class="btn-marquee-ticket">
+  <div class="marquee-track">
+    <span>BUILD NOW • BUILD NOW • BUILD NOW • BUILD NOW • </span>
+  </div>
+</button>`,
+    css: `.btn-marquee-ticket {
+  width: 170px;
+  height: 44px;
+  overflow: hidden;
+  background: #facc15;
+  color: #000000;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  font-weight: 800;
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.marquee-track {
+  display: inline-block;
+  will-change: transform;
+}
+
+.btn-marquee-ticket:hover .marquee-track {
+  animation: marquee-scroll 4s linear infinite;
+}
+
+.btn-marquee-ticket:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-marquee-ticket"><div class="marquee-track"><span>BUILD NOW • BUILD NOW • BUILD NOW • BUILD NOW • </span></div></button>`;
+    }
+  },
+
+  // 32. 3D Mechanical Keycap
+  {
+    id: 'cherry-keycap',
+    name: 'Mechanical Key Switch',
+    category: '3d',
+    tags: ['keycap', 'keyboard', 'mechanical', 'switch'],
+    description: 'Precision molded keyboard profile with authentic bottom-out clack',
+    html: `<button class="btn-keycap">
+  <span class="keycap-legend">ESC</span>
+</button>`,
+    css: `.btn-keycap {
+  position: relative;
+  width: 58px;
+  height: 54px;
+  background: #27272a;
+  border: 1px solid #3f3f46;
+  border-radius: 8px;
+  box-shadow: 0 6px 0 #18181b, 0 10px 14px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease;
+}
+
+.keycap-legend {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 800;
+  color: #e4e4e7;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #3f3f46 0%, #27272a 100%);
+}
+
+.btn-keycap:hover {
+  background: #3f3f46;
+}
+
+.btn-keycap:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #18181b, 0 4px 6px rgba(0, 0, 0, 0.4);
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-keycap"><span class="keycap-legend">ESC</span></button>`;
+    }
+  },
+
+  // 33. Shimmer Golden Hour
+  {
+    id: 'golden-hour',
+    name: 'Golden Hour Luster',
+    category: 'glow',
+    tags: ['gold', 'luxury', 'metallic', 'warm'],
+    description: 'Warm champagne gold specular reflection sweeping diagonally',
+    html: `<button class="btn-gold-luster">
+  <span>INVEST PORTFOLIO</span>
+</button>`,
+    css: `.btn-gold-luster {
+  position: relative;
+  overflow: hidden;
+  padding: 13px 30px;
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  color: #fffbeb;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: 1px solid #f59e0b;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(217, 119, 6, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-gold-luster::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: rotate(25deg);
+  transition: left 0.6s ease;
+}
+
+.btn-gold-luster:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.5);
+}
+
+.btn-gold-luster:hover::after {
+  left: 140%;
+}
+
+.btn-gold-luster:active {
+  transform: translateY(0);
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-gold-luster"><span>INVEST PORTFOLIO</span></button>`;
+    }
+  },
+
+  // 34. Magnetic Magnet Snap
+  {
+    id: 'magnetic-snap',
+    name: 'Magnetic Attraction Dot',
+    category: 'minimal',
+    tags: ['magnetic', 'physics', 'interactive', 'tracking'],
+    description: 'Smooth magnetic offset tracking with return spring elasticity',
+    html: `<button class="btn-magnetic-pull">
+  <span>Explore Labs</span>
+  <span class="magnetic-dot">●</span>
+</button>`,
+    css: `.btn-magnetic-pull {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 28px;
+  background: #18181b;
+  color: #fafafa;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #27272a;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: transform 0.15s ease-out, border-color 0.2s;
+}
+
+.magnetic-dot {
+  font-size: 10px;
+  color: #22c55e;
+  transition: transform 0.2s ease-out;
+}
+
+.btn-magnetic-pull:hover {
+  border-color: #52525b;
+}
+
+.btn-magnetic-pull:hover .magnetic-dot {
+  transform: scale(1.4);
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-magnetic-pull"><span>Explore Labs</span><span class="magnetic-dot">●</span></button>`;
+      const btn = c.querySelector('.btn-magnetic-pull') as HTMLElement;
+      btn?.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = (e.clientX - rect.left - rect.width / 2) * 0.25;
+        const y = (e.clientY - rect.top - rect.height / 2) * 0.25;
+        btn.style.transform = `translate(${x}px, ${y}px)`;
+      });
+      btn?.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0px, 0px)';
+      });
+    }
+  },
+
+  // 35. Retro CRT Glitch Screen
+  {
+    id: 'crt-flicker',
+    name: 'CRT Raster Scanline',
+    category: 'retro',
+    tags: ['crt', 'scanline', 'retro', 'flicker'],
+    description: 'Vintage phosphorescent monitor scanline raster and green phosphor',
+    html: `<button class="btn-crt-screen">
+  <span class="crt-glow">CONNECT MODEM</span>
+</button>`,
+    css: `.btn-crt-screen {
+  position: relative;
+  overflow: hidden;
+  padding: 12px 28px;
+  background: #021a08;
+  color: #22c55e;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  border: 2px solid #16a34a;
+  border-radius: 4px;
+  cursor: pointer;
+  text-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+  box-shadow: inset 0 0 10px rgba(34, 197, 94, 0.3), 0 0 12px rgba(34, 197, 94, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-crt-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.35) 0px,
+    rgba(0, 0, 0, 0.35) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+}
+
+.btn-crt-screen:hover {
+  background: #052e16;
+  box-shadow: inset 0 0 15px rgba(34, 197, 94, 0.5), 0 0 20px rgba(34, 197, 94, 0.6);
+  transform: scale(1.02);
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-crt-screen"><span class="crt-glow">CONNECT MODEM</span></button>`;
+    }
+  },
+
+  // 36. Minimal Underline Reveal
+  {
+    id: 'underline-slide',
+    name: 'Monochrome Ink Reveal',
+    category: 'minimal',
+    tags: ['ink', 'editorial', 'underline', 'clean'],
+    description: 'Dynamic center-out expanding hairline ink rule on hover',
+    html: `<button class="btn-ink-reveal">
+  <span>Read Dispatch</span>
+  <span class="ink-line"></span>
+</button>`,
+    css: `.btn-ink-reveal {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 600;
+  border: none;
+  padding: 10px 18px;
+  cursor: pointer;
+}
+
+.ink-line {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--text-primary);
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), left 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-ink-reveal:hover .ink-line {
+  width: 80%;
+  left: 10%;
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-ink-reveal"><span>Read Dispatch</span><span class="ink-line"></span></button>`;
+    }
   }
 ];
