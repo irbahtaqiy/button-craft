@@ -867,5 +867,209 @@ export const buttonsData: ButtonItem[] = [
     render: (c) => {
       c.innerHTML = `<button class="btn-gradient-slide"><span>Schedule Demo</span></button>`;
     }
+  },
+
+  // 17. Electric Border Beam
+  {
+    id: 'electric-beam',
+    name: 'Electric Neon Beam',
+    category: 'glow',
+    tags: ['beam', 'electric', 'laser', 'glow'],
+    description: 'Blazing laser energy beam shooting around perimeter',
+    html: `<button class="btn-beam">
+  <span class="btn-beam-line"></span>
+  <span class="btn-beam-text">Activate Core</span>
+</button>`,
+    css: `.btn-beam {
+  position: relative;
+  padding: 12px 28px;
+  background: #05070e;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.btn-beam-line {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+  animation: beam-run 2.5s linear infinite;
+}
+
+.btn-beam-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #38bdf8;
+  letter-spacing: 0.5px;
+}
+
+.btn-beam:hover {
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+  border-color: #38bdf8;
+}
+
+@keyframes beam-run {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-beam"><span class="btn-beam-line"></span><span class="btn-beam-text">Activate Core</span></button>`;
+    }
+  },
+
+  // 18. Holographic Iridescent
+  {
+    id: 'holographic-prism',
+    name: 'Holo Foil Prism',
+    category: 'glass',
+    tags: ['hologram', 'foil', 'iridescent', 'shiny'],
+    description: 'Iridescent pearl sheen reflecting holographic spectra',
+    html: `<button class="btn-holo">
+  <span>Mint NFT</span>
+</button>`,
+    css: `.btn-holo {
+  position: relative;
+  padding: 13px 32px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.btn-holo::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(from 180deg at 50% 50%, #ff595e, #ffca3a, #8ac926, #1982c4, #6a4c93, #ff595e);
+  filter: blur(20px);
+  opacity: 0.35;
+  transition: opacity 0.3s;
+}
+
+.btn-holo span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-holo:hover::before {
+  opacity: 0.75;
+  animation: holo-spin 4s linear infinite;
+}
+
+@keyframes holo-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-holo"><span>Mint NFT</span></button>`;
+    }
+  },
+
+  // 19. Cyberpunk Terminal Prompt
+  {
+    id: 'cyber-terminal',
+    name: 'CLI Shell Executor',
+    category: 'cyberpunk',
+    tags: ['cli', 'terminal', 'code', 'monospace'],
+    description: 'Monochrome hacker terminal prompt with blinking cursor',
+    html: `<button class="btn-terminal">
+  <span class="term-prompt">$</span>
+  <span>run deploy.sh</span>
+  <span class="term-cursor"></span>
+</button>`,
+    css: `.btn-terminal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  background: #020617;
+  color: #22c55e;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13.5px;
+  font-weight: 600;
+  border: 1px solid #16a34a;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.15);
+  transition: all 0.2s ease;
+}
+
+.term-prompt {
+  color: #4ade80;
+  font-weight: 800;
+}
+
+.term-cursor {
+  width: 7px;
+  height: 15px;
+  background: #22c55e;
+  animation: blink 1s step-end infinite;
+}
+
+.btn-terminal:hover {
+  background: #052e16;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+  transform: translateY(-2px);
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-terminal"><span class="term-prompt">$</span><span>run deploy.sh</span><span class="term-cursor"></span></button>`;
+    }
+  },
+
+  // 20. Brutalist Warning Caution
+  {
+    id: 'brutalist-warning',
+    name: 'Hazard Stripe Caution',
+    category: 'brutalist',
+    tags: ['hazard', 'danger', 'caution', 'industrial'],
+    description: 'Black and yellow construction diagonal warning stripes',
+    html: `<button class="btn-hazard">
+  <span>CONFIRM DESTRUCTION</span>
+</button>`,
+    css: `.btn-hazard {
+  position: relative;
+  padding: 13px 26px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #facc15,
+    #facc15 12px,
+    #000000 12px,
+    #000000 24px
+  );
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 900;
+  border: 3px solid #000000;
+  cursor: pointer;
+  box-shadow: 6px 6px 0px #dc2626;
+  text-shadow: 0 0 3px #000, 0 0 6px #000;
+  transition: all 0.15s ease;
+}
+
+.btn-hazard:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px #dc2626;
+}
+
+.btn-hazard:active {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0px #dc2626;
+}`,
+    render: (c) => {
+      c.innerHTML = `<button class="btn-hazard"><span>CONFIRM DESTRUCTION</span></button>`;
+    }
   }
 ];
